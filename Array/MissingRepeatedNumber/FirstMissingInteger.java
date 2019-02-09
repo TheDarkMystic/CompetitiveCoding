@@ -1,4 +1,4 @@
-package interviewprep.Array;
+package interviewprep.Array.MissingRepeatedNumber;
 
 /**
  *
