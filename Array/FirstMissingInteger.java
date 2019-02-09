@@ -32,6 +32,9 @@ public class FirstMissingInteger {
 }
 
 /*
+ProblemURLS:
+I-https://www.interviewbit.com/problems/first-missing-integer/
+L-https://leetcode.com/problems/first-missing-positive/
 NOTES:
 R1-https://discuss.leetcode.com/topic/8293/my-short-c-solution-o-1-space-and-o-n-time
 R2-http://javadevnotes.com/java-list-to-array-examples
