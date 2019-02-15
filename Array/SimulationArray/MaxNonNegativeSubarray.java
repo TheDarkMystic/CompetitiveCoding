@@ -12,35 +12,36 @@ package interviewprep.Array.SimulationArray;
 
 import java.util.*;
 public class MaxNonNegativeSubarray {
-    public ArrayList<Integer> maxset(ArrayList<Integer> a) {
-	    
-	    long curr_sum = 0;
-	    long max_sum = 0;
-	    
-	    ArrayList<Integer> newSol = new ArrayList<>();
-	    ArrayList<Integer> sol = new ArrayList<>();
-	    
-	    
-	    for(Integer i: a)
-	    {
-	        if(i>=0){
-	            curr_sum+=i;
-	            newSol.add(i);
-	        }
-	   
-	        else{
-	            curr_sum=0;
-	            newSol=new ArrayList<Integer>();
-	        }
-	        
-	        if(curr_sum>max_sum || (curr_sum==max_sum) && (newSol.size()>sol.size())){
-	            sol=newSol;
-	            max_sum=curr_sum;
-	        }
-	    }
-	    
-	    return sol;
-}
+    public ArrayList<Integer> maxset(ArrayList<Integer> arr) {
+        int len=arr.size();
+        
+        //sum may overflow int range hence use long
+        long cur_sum=0;
+        long max_sum=0;
+        
+        ArrayList<Integer> sol= new ArrayList<Integer>();
+        ArrayList<Integer> newSol= new ArrayList<Integer>();
+       
+        
+        for(Integer num: arr){
+            if(num>=0){
+                cur_sum+=num;
+                newSol.add(num);
+            }
+            else{
+                cur_sum=0;
+                newSol=new ArrayList<Integer>();
+            }
+            
+            if(cur_sum>max_sum || (cur_sum==max_sum && newSol.size()>sol.size())){
+                sol=newSol;
+                max_sum=cur_sum;
+            }
+        }
+        
+        return sol;
+        
+    }
 }
 
 /*
