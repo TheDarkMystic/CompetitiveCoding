@@ -9,22 +9,35 @@ package interviewprep.Array.Arrangement;
  *
  * @author jakadam
  */
-import java.util.List;
+import java.util.*;
 public class FindDuplicateInArray {
     public int repeatedNumber(final List<Integer> a) {
-	    boolean[] arr = new boolean[a.size()];
-	    
-	    
-	    for(int i = 0 ; i < a.size() ; i ++){
-	       int tmp = a.get(i)-1;
-	       if(arr[tmp]==true){
-	           return tmp+1;
-	       }else{
-	       arr[tmp] = true ; 
-	       }
-	    }
-	    return -1;
-	    
+        
+        
+        //Approach 1: Since input is read only, use a Set. It will take O(n) space
+        
+        Set<Integer> set= new HashSet<Integer>();
+        
+        for(int num: a){
+            if(set.contains(num)==true)
+                return num;
+            else set.add(num);
+        }
+        
+        return 0;
+      /*  
+        //Approach 2: Maintaining a Boolean array for tracking
+        boolean[] arr = new boolean[a.size()];
+        for(int i = 0 ; i < a.size() ; i ++){
+           int tmp = a.get(i)-1;
+           if(arr[tmp]==true){
+               return tmp+1;
+           }else{
+           arr[tmp] = true ; 
+           }
+        }
+        return 0;
+	*/
 	}
 }
 

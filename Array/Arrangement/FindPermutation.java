@@ -1,8 +1,25 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+Given a positive integer n and a string s consisting only of letters D or I, you have to find any permutation of first n positive integer that satisfy the given input string.
+
+D means the next number is smaller, while I means the next number is greater.
+
+Notes
+
+Length of given string s will always equal to n - 1
+Your solution should run in linear time and space.
+Example :
+
+Input 1:
+
+n = 3
+
+s = ID
+
+Return: [1, 3, 2]
+
+I/P : "DIDD" 5
+O/P :  5 1 4 3 2
+*/
 package interviewprep.Array.Arrangement;
 
 /**
@@ -29,7 +46,8 @@ public class FindPermutation {
                 max--;
             }
         }
-        res.add(min);
+        res.add(min); // ans.add(max); also works as min and max both point to same no. now. 
+        
         return res;
     }
 
@@ -43,7 +61,4 @@ I-https://www.interviewbit.com/problems/find-permutation/
 NOTES:
 http://www.binarycoder.org/array/find-permutation-interviewbit-solution/
 
-
-I/P : "DIDD" 5
-O/P :  5 1 4 3 2
 */

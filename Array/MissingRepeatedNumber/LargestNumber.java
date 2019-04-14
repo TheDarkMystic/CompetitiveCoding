@@ -24,37 +24,44 @@ public class LargestNumber {
     Apparently, case1 is greater than case2 in terms of value.
     So, we should always put s1 in front of s2.
 */
-	public String largestNumber(final List<Integer> nums) {
-	    
-	    int len =nums.size();
+    public String largestNumber(final List<Integer> A) {
+        /*
+        This problem can be solved by sorting strings, not sorting integer. Define a 
+        comparator to compare strings by concat() right-to-left or left-to-right.
+
+        */
+        int lenA= A.size();
+        String str[] = new String[lenA];
         
-        if(len==0 || nums==null) return "";
-        String str[] = new String[len];
+        // Convert Integer list to Array of String Objs
+        for(int i=0; i<lenA; i++){
+            str[i]=String.valueOf(A.get(i));
+        }
         
-        for(int ele=0;ele<len;ele++)  str[ele]=Integer.toString(nums.get(ele));
-        
-        //sort in ascending oreder of lexecography
+        //write comparator to sort the String obj array in descending order of the strings
         Arrays.sort(str, new Comparator<String>(){
-            public int compare(String a, String b){//*********
-                return (b+a).compareTo(a+b);//****************
+            public int compare(String a, String b){
+                return (b+a).compareTo(a+b);
             }
         });
         
-        //check if largest number in array is 0, Sorted in ascending order hence len-1
-        if(str[0].charAt(0)=='0') return "0";
-        StringBuffer sb=new StringBuffer("");
-        /*
         
-        for(int i=len-1; i>=0;i--){
-            sb.append(str[i]);
-        }*/
-        
-        for(String s: str)
+        // create string Builder from string array, we will perform some trimming operations
+        // on the output before returning
+        StringBuilder sb= new StringBuilder();
+        for(String s: str){
             sb.append(s);
+        }
         
+        // Remove the leading 0's
+        while(sb.charAt(0)=='0' && sb.length()>1){
+            sb.deleteCharAt(0);
+        }
+        
+        // convert stringBuilder to string and return
         return sb.toString();
-	    
-	}
+        
+    }
 }
 
 /*
@@ -65,5 +72,9 @@ NOTES:
 http://www.programcreek.com/2014/02/leetcode-largest-number-java/
 https://www.youtube.com/watch?v=iTC43mLZG38
 
+Comparator->
+https://www.youtube.com/watch?v=0xrhqxTOphI
+compareTo->
+https://www.youtube.com/watch?v=iTC43mLZG38
 
 */
