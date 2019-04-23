@@ -14,7 +14,7 @@ import java.util.*;
 public class RotateMatrix {
     public void rotate(ArrayList<ArrayList<Integer>> A) {
 	    
-	    // revised code from leetcode
+	    //revised code from leetcode
 	    //Clockwise 90 degree
 	    //step 1: reverse up to down 
 	    Collections.reverse(A);
@@ -33,16 +33,16 @@ public class RotateMatrix {
 	    
 	    
 /*	    
-	   //THIS taken from Github anyway copied from CTCI
-	   //NOT TLE check the offset wala statement, that's the game changer
+	//THIS taken from Github anyway copied from CTCI
+	//NOT TLE check the offset wala statement, that's the game changer
 				   
-		int n = A.size();
+	int n = A.size();
         if(n == 0)
             return;
         int layers = n;
         
         int row1, col1, row2, col2;*/
-/*        int num;
+/*      int num;
         int temp;
         int first, last;
         for(int layer = 0; layer < layers/2; layer++){
