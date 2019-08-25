@@ -1,93 +1,59 @@
-
-/**
- * Given an array A of integers, find the maximum of j - i subjected to the constraint of A[i] <= A[j].
-
-    If there is no solution possible, return -1.
-
-    Example :
-
-    A : [3 5 4 2]
-
-    Output : 2 
-    for the pair (3, 4)
-
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-package interviewprep.Array;
+package interviewprep.Array.Bucketing;
 
 /**
  *
  * @author jakadam
  */
-
 import java.util.*;
 public class MaxDistance {
-    // DO NOT MODIFY THE LIST. IT IS READ ONLY
-    public int maximumGap(final List<Integer> A) {
-        /*
-        
-        we construct two auxiliary arrays LMin[] and RMax[] such that LMin[i] holds the 
-        smallest element on left side of arr[i] including arr[i], and RMax[j] holds the 
-        greatest element on right side of arr[j] including arr[j]. 
-        
-        After constructing these two auxiliary arrays, we traverse both of these arrays 
-        from left to right. While traversing LMin[] and RMa[] if we see that LMin[i] is 
-        greater than RMax[j],then we must move ahead in LMin[] (or do i++) because all 
-        elements on left of LMin[i] are greater than or equal to LMin[i]. 
-        Otherwise we must move ahead in RMax[j] to look for a greater j-i value.
-        
-        */
-        
-        //Step 1 : Create Auxiliary array
-        int len=A.size();
-        
-        int lmin[] =new int[len];
-        int rmax[] =new int[len];
-        
-        //Step 2 :Populate Auxiliary Arrays
-        lmin[0]=A.get(0);
-        for(int i=1; i<len; i++)
-            lmin[i]=Math.min(lmin[i-1],A.get(i));
-                
-        
-        rmax[len-1]=A.get(len-1);
-        for(int i=len-2; i>=0; i--)
-            rmax[i]=Math.max(rmax[i+1],A.get(i));
-            
-        
-        //Step 3 : Traverse the Aux Arrays
-        int i=0,j=0;
-        //if ans is not found, return -1. Hence init maxDist with -1
-        int maxDist=-1;
-        while(i<len && j<len){
-            if(lmin[i]<=rmax[j]){
-                maxDist=Math.max(j-i, maxDist);
-                j++;
-            }
-            else
-                i++;
-                
+    // DO NOT MODIFY THE LIST
+	public int maximumGap(final List<Integer> a) {
+	
+	int n1 =a.size();
+	int A[]= new int[n1];
+	
+	//convert arraylist to array
+	for(int i=0;i<n1; i++)A[i]=a.get(i);
+	
+	int lmin[]= new int[n1], 
+    rmax[]= new int[n1], 
+    i, j,
+    max = -1;
+  
+    //populate lmin[]
+    lmin[0]=A[0];
+    for(i=1; i<n1; i++)
+        lmin[i]=Math.min(A[i], lmin[i-1]);
+ 
+    //populate rmax[]
+    rmax[n1-1]=A[n1-1];
+    for(i=n1-2; i>=0; i--)
+        rmax[i]=Math.max(A[i],rmax[i+1]);
+    
+    
+    //traversing lmin[], rmax[]
+    for(i=0, j=0; i<n1 && j<n1; ){
+        if(lmin[i]<=rmax[j]){// this condition is different on GFG
+            max=Math.max(j-i, max);
+            j++;
+        }else{
+            i++;
         }
-        
-        return maxDist;
-        
     }
+    return max;
+}
 }
 
+
 /*
-Links-https://www.interviewbit.com/problems/max-distance/
-Notes-
+ProblemUrls:
+I-https://www.interviewbit.com/problems/max-distance/
+NOTES:
 http://www.geeksforgeeks.org/given-an-array-arr-find-the-maximum-j-i-such-that-arrj-arri/
-Eg.
-
-Input: {34, 8, 10, 3, 2, 80, 30, 33, 1}
-lmin=  [34, 8, 8,  3, 2, 2,   2,  2,  1]
-rmax= [80, 80, 80, 80, 80,80,33, 33, 1]
-Output: 6  (j = 7, i = 1)
-
-Input:  3, 2, 1
-lmin=[3, 2, 1]
-rmax=[3, 2, 1]
-output:0
 
 */
-
