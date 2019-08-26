@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Given an integer array, find if an integer p exists in the array such that the number of integers greater than p in the array equals to p
+If such an integer is found return 1 else return -1.
  */
 package interviewprep.Array.Bucketing;
 

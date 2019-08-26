@@ -1,3 +1,16 @@
+/*
+Given an unsorted integer array, find the first missing positive integer.
+
+Example:
+
+Given [1,2,0] return 3,
+
+[3,4,-1,1] return 2,
+
+[-8, -7, -6] returns 1
+
+Your algorithm should run in O(n) time and use constant space.
+*/
 package interviewprep.Array.MissingRepeatedNumber;
 
 /**
@@ -5,10 +18,12 @@ package interviewprep.Array.MissingRepeatedNumber;
  * @author jakadam
  */
 import java.util.*;
+
 public class FirstMissingInteger {
+
     public int firstMissingPositive(ArrayList<Integer> A) {
-    //Approach 1:Put each number in its right place.
-    /*  
+        //Approach 1:Put each number in its right place.
+        /*  
         Put each number in its right place.
 
         For example:
@@ -37,47 +52,44 @@ public class FirstMissingInteger {
         
         return len+1;
 	}
-    */
+         */
 
-    // Approach 2: Using Input array as tracker
-   
-    /*
+        // Approach 2: Using Input array as tracker
+        /*
         1.The -ve's & 0's in the array are of no use to us. We can replace them with some large 
             +ve num( Here abs(Max(A)) )
         2.Then when you find a +ve num in array, mark the indx as -ve.
-            eg. if you find 3, mark the element presne at the 3rd index in array -ve
+            eg. if you find 3, mark the element present at the 3rd index in array -ve
             This will work as a flag stating that we have encountered the num in array.
         3. Traverse the array and find first positive element in array. return the indx+1 as ans.
-       */ 
-        
+         */
         // Implementing step 1
-        int lenA=A.size();
-        int inf=Math.abs(Collections.max(A))+1;
-        
-        for(int i=0; i<lenA; i++){
-            if(A.get(i)<=0)
-                A.set(i,inf);
+        int lenA = A.size();
+        int inf = Math.abs(Collections.max(A)) + 1;
+
+        for (int i = 0; i < lenA; i++) {
+            if (A.get(i) <= 0) {
+                A.set(i, inf);
+            }
         }
-        
+
         // Implementing step 2
-
-        for(int i=0; i<lenA; i++){
-            int flag=Math.abs(A.get(i))-1;
-            if(flag<lenA && flag>=0 && A.get(flag)>0)
-                A.set(flag,-1*A.get(flag));
+        for (int i = 0; i < lenA; i++) {
+            int flag = Math.abs(A.get(i)) - 1;
+            if (flag < lenA && flag >= 0 && A.get(flag) > 0) {
+                A.set(flag, -1 * A.get(flag));
+            }
         }
-        
-        
-       // Implementing step 3
 
-        for(int i=0; i<lenA; i++){
-            if(A.get(i)>0)
-                return i+1;
+        // Implementing step 3
+        for (int i = 0; i < lenA; i++) {
+            if (A.get(i) > 0) {
+                return i + 1;
+            }
         }
-        
-        
+
         // if no element is missing the next element is arrayLen+1. Hence return.
-        return lenA+1;
+        return lenA + 1;
     }
 }
 
@@ -89,4 +101,4 @@ NOTES:
 R1-https://discuss.leetcode.com/topic/8293/my-short-c-solution-o-1-space-and-o-n-time
 R2-http://javadevnotes.com/java-list-to-array-examples
 S1-https://leetcode.com/problems/first-missing-positive/submissions/
-*/
+ */
