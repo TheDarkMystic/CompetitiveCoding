@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Given an index k, return the kth row of the Pascal’s triangle.
+
+Pascal’s triangle : To generate A[C] in row R, sum up A’[C] and A’[C-1] from previous row R - 1.
+
+Example:
+
+Input : k = 3
+
+Return : [1,3,3,1]
+NOTE : k is 0 based. k = 0, corresponds to the row [1]. 
+Note:Could you optimize your algorithm to use only O(k) extra space?
  */
 package interviewprep.Array.SimulationArray;
 
@@ -10,21 +18,28 @@ package interviewprep.Array.SimulationArray;
  * @author jakadam
  */
 import java.util.*;
+
 public class KthRowOfPascalTriangle {
-//    public ArrayList<Integer> getRow(int rowNum) {
-//	    int A[] = new int[rowNum+1];
-//        Arrays.fill(A,0);
-//        A[0]=1;
-//        
-//        for(int i=1;i<=rowNum; i++)
-//            for(int j=i;j>0;j--)
-//                A[j]=A[j]+A[j-1];
-//	    
-//	    ArrayList<Integer> sol= new ArrayList<Integer>();
-//	    for(int ele: A)
-//	        sol.add(ele);
-//	    return sol;
-//	}
+
+    public ArrayList<Integer> getRow(int rowNum) {
+        int A[] = new int[rowNum + 1];
+        Arrays.fill(A, 0);
+        A[0] = 1;
+
+        for (int i = 1; i <= rowNum; i++) {
+            for (int j = i; j > 0; j--) {
+                A[j] = A[j] + A[j - 1];
+            }
+        }
+
+        ArrayList<Integer> sol = new ArrayList<>();
+        for (int ele : A) {
+            sol.add(ele);
+        }
+
+        return sol;
+    }
+    /*
      public ArrayList<Integer> getRow(int A) {
         int lineNum=A+1;
         int prevEle=1;
@@ -37,6 +52,7 @@ public class KthRowOfPascalTriangle {
         
         return res;
     }
+     */
 }
 
 
@@ -56,4 +72,4 @@ and calculate subsequent eles using
 
 pre=pre*(lineNo. - eleNo.)/(eleNo)
 
-*/
+ */
