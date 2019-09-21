@@ -1,7 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Given an unsorted array, find the maximum difference between the successive elements in its sorted form.
+
+Try to solve it in linear time/space.
+
+Example :
+
+Input : [1, 10, 5]
+Output : 5 
+Return 0 if the array contains less than 2 elements.
+
+You may assume that all the elements in the array are non-negative integers and fit in the 32-bit signed integer range.
+You may also assume that the difference will not overflow.
  */
 package interviewprep.Array.Bucketing;
 
@@ -11,9 +20,8 @@ package interviewprep.Array.Bucketing;
  */
 import java.util.*;
 public class MaximumConsecutiveGap {
-    public int maximumGap(final List<Integer> nums) {
-	    
-	    int n = nums.size();
+    public int maximumGap(final List<Integer> nums) {    
+	int n = nums.size();
         if (n < 2) return 0;
         Collections.sort(nums);
         int maxGap = 0;

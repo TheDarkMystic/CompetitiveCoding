@@ -1,7 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * 
+Given a singly linked list, determine if its a palindrome. Return 1 or 0 denoting if its a palindrome 
+or not, respectively.
+
+Notes:
+
+Expected solution is linear in time and constant in space.
+For example,
+
+List 1-->2-->1 is a palindrome.
+List 1-->2-->3 is not a palindrome.
  */
 package interviewprep.LinkedList;
 

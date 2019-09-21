@@ -1,7 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Given a binary tree, return the preorder traversal of its nodes’ values.
+
+Example :
+Given binary tree
+
+   1
+    \
+     2
+    /
+   3
+return [1,2,3].
+
+Using recursion is not allowed.
  */
 package interviewprep.Trees.Traversal;
 
@@ -11,9 +21,6 @@ package interviewprep.Trees.Traversal;
  */
     
 import java.util.*;
-
-
- 
 
 public class PreOrderTraversal {
     public ArrayList<Integer> preorderTraversal(TreeNode A) {
@@ -67,7 +74,8 @@ public class PreOrderTraversal {
 }
 
 /*
-Link - https://www.interviewbit.com/problems/preorder-traversal/
+Link - 
+    https://www.interviewbit.com/problems/preorder-traversal/
 
 Notes- 
 https://www.youtube.com/watch?v=elQcrJrfObg

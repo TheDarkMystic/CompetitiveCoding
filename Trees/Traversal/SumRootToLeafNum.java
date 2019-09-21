@@ -31,19 +31,56 @@ package interviewprep.Trees.Traversal;
  *     TreeNode(int x) { val = x; }
  * }
  */
-public class SumRootToLeafNum {
-    public int sumNumbers(TreeNode root) {
-        return sumTree(root,0)%1003;
+public int SumRootToLeafNum(TreeNode root) {
+    if(root == null) 
+        return 0;
+ 
+    return dfs(root, 0, 0);
+}
+ 
+public int dfs(TreeNode node, int num, int sum){
+    if(node == null) return sum;
+ 
+    num = num*10 + node.val;
+ 
+    // leaf
+    if(node.left == null && node.right == null) {
+        sum += num;
+        return sum;
     }
+ 
+    // left subtree + right subtree
+    sum = dfs(node.left, num, sum) + dfs(node.right, num, sum);
+    return sum;
+}
+
+
+public class SumRootToLeafNum {
     
-    public int sumTree(TreeNode node, int sum){
-        
-        if(node==null) return 0;
-        sum=(sum*10+node.val)%1003;
-        if(node.right==null && node.left==null) return sum;
-        
-        return sumTree(node.left, sum) +
-               sumTree(node.right, sum);
+    public int sumNumbers(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+
+        return dfs(root, 0, 0);
+    }
+
+    public int dfs(TreeNode node, int num, int sum) {
+        if (node == null) {
+            return sum;
+        }
+
+        num = num * 10 + node.val;
+
+        // leaf
+        if (node.left == null && node.right == null) {
+            sum += num;
+            return sum;
+        }
+
+        // left subtree + right subtree
+        sum = dfs(node.left, num, sum) + dfs(node.right, num, sum);
+        return sum;
     }
     
 }

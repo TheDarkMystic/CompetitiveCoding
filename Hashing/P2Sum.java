@@ -20,35 +20,26 @@ import java.util.*;
 
 public class P2Sum {
     // DO NOT MODIFY THE LIST. IT IS READ ONLY
-    public ArrayList<Integer> twoSum(final List<Integer> A, int target) {
-        ArrayList<Integer> sol=new ArrayList<>();
-        HashMap<Integer, Integer> map= new HashMap<Integer, Integer>();
+        public ArrayList<Integer> twoSum(final List<Integer> a, int b) {
         
-        int len=A.size();
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
         
-        //handle corner case
-        if(A==null || len<2){
-            sol.add(0);
-            sol.add(0);
-            return sol;
-        }
+        ArrayList<Integer> ans = new ArrayList<Integer>();
         
-        //main logic
-        for(int i=0; i<len; i++){
-            if(map.containsKey(A.get(i))==true){
-                sol.add(map.get(A.get(i)));
-                sol.add(i+1);
-                break;
-                
-            }
-            else{ 
-                if(!map.containsKey(target-A.get(i)))
-                    map.put(target-A.get(i), i+1);
+        for (int i = 0; i < a.size(); i++){
+            int curr = a.get(i);
+            
+            if (map.containsKey(b-curr)){
+                int index = map.get(b-curr);
+                ans.add(index);
+                ans.add(i + 1);
+                return ans;
+            }else if (!map.containsKey(curr)){
+                map.put(curr, i + 1);
             }
         }
         
-        return sol;
-        
+        return ans;
     }
 }
 /*

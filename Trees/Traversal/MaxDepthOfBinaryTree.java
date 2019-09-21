@@ -1,7 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
+Given a binary tree, find its maximum depth.
+
+The maximum depth of a binary tree is the number of nodes along the longest path from the root node down to the farthest leaf node.
+
+ NOTE : The path has to end on a leaf node. 
+Example :
+
+         1
+        /
+       2
+max depth = 2.
  */
 package interviewprep.Trees.Traversal;
 
@@ -9,23 +18,34 @@ package interviewprep.Trees.Traversal;
  *
  * @author jakadam
  */
+
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
+ */
 public class MaxDepthOfBinaryTree {
-     public int maxDepth(TreeNode A) {
-        int ans=calcDepth(A);
-        return ans;
+    public int maxDepth(TreeNode A) {
         
-    }
-    
-     
-    public int calcDepth(TreeNode A){
-        // question has a definition refering to depth in terms of nodes hence return 0 for leaf
-        // if height is refered to in terms of edges, return -1 for leaf;
-        // watch video explaination from mycodeschool
         if(A==null)
             return 0;
-        return 1+ Math.max(calcDepth(A.left),calcDepth(A.right));
+        
+        return 
+            1+ Math.max(maxDepth(A.left),maxDepth(A.right));
     }
+    
+    
 }
+
+
 
 /*
 Links-https://www.interviewbit.com/problems/max-depth-of-binary-tree/

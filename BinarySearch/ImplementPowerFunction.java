@@ -4,7 +4,7 @@ Implement pow(x, n) % d.
 
 In other words, given x, n and d,
 
-find (xn % d)
+find (x^n % d)
 
 Note that remainders on division cannot be negative. 
 In other words, make sure the answer you return is non negative.
@@ -21,12 +21,9 @@ package interviewprep.BinarySearch;
  * @author jakadam
  */
 
-
-
 public class ImplementPowerFunction {
     public int pow(int x, int n, int p) {
         if (n == 0) return 1 % p;
-
             long ans = 1, base = x;
             while (n > 0) {
                 // We need (base ** n) % p. 

@@ -1,7 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *
+Given a binary tree, find its minimum depth.
+
+The minimum depth is the number of nodes along the shortest path from the root node down to the nearest 
+leaf node.
+
+NOTE : The path has to end on a leaf node. 
+Example :
+
+         1
+        /
+       2
+min depth = 2.
  */
 package interviewprep.Trees.Traversal;
 

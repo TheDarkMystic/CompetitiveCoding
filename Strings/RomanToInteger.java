@@ -25,7 +25,7 @@ public class RomanToInteger {
         /*
         1.  Roman Numeral have 7 fundamental numbers ('I',1), ('V',5),('X',10), ('L',50),
             ('C',100),('D',500),('M',1000). 
-        2.  Traverse the given Roman no. String from Right to Right.
+        2.  Traverse the given Roman no. String from Right to Left.
             if the value of literal Increase(or equal) from right to left,
                 add the value of cur literal to running sum
             else 

@@ -1,7 +1,24 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Given n non-negative integers representing an elevation map where the width of each bar is 1, compute how much water it is able to trap after raining.
+
+
+
+Input Format
+
+The only argument given is integer array A.
+Output Format
+
+Return the total water it is able to trap after raining..
+For Example
+
+Input 1:
+    A = [0,1,0,2,1,0,1,3,2,1,2,1]
+Output 1:
+    6
+Explaination 1: <img src="http://i.imgur.com/0qkUFco.png">
+    
+    In this case, 6 units of rain water (blue section) are being trapped.
+
  */
 package interviewprep.StackQueues;
 
@@ -12,6 +29,7 @@ package interviewprep.StackQueues;
 
 import java.util.*;
 public class RainWaterTrapped {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
     public int trap(final List<Integer> A) {
         
         //idea is to calculate water level above each individual wall
@@ -27,7 +45,7 @@ public class RainWaterTrapped {
         int maxToLeft=0;
         for(int i=0; i<len; i++){
              tallestToLeft[i]=maxToLeft;
-            if(A.get(i)>=maxToLeft)
+            if(A.get(i)>maxToLeft)
                 maxToLeft=A.get(i);
         }
         
@@ -35,7 +53,7 @@ public class RainWaterTrapped {
         int maxToRight=0;
         for(int i=len-1; i>=0; i--){
             tallestToRight[i]=maxToRight;
-            if(A.get(i)>=maxToRight)
+            if(A.get(i)>maxToRight)
                 maxToRight=A.get(i);
         }
         
