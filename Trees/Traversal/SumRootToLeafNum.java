@@ -56,31 +56,25 @@ public int dfs(TreeNode node, int num, int sum){
 
 
 public class SumRootToLeafNum {
-    
     public int sumNumbers(TreeNode root) {
-        if (root == null) {
-            return 0;
-        }
-
-        return dfs(root, 0, 0);
+        return sumTree(root,0)%1003;
     }
-
-    public int dfs(TreeNode node, int num, int sum) {
-        if (node == null) {
-            return sum;
-        }
-
-        num = num * 10 + node.val;
-
+    
+    public int sumTree(TreeNode node, int sum){
+        //one child is null
+        if(node==null) 
+            return 0;
+        
+        //calculate the sum
+        sum=(sum*10+node.val)%1003;
+        
         // leaf
-        if (node.left == null && node.right == null) {
-            sum += num;
+        if(node.right==null && node.left==null) 
             return sum;
-        }
-
-        // left subtree + right subtree
-        sum = dfs(node.left, num, sum) + dfs(node.right, num, sum);
-        return sum;
+        
+        //left subtree + right subtree
+        return sumTree(node.left, sum) +
+               sumTree(node.right, sum);
     }
     
 }
