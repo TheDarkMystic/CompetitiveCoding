@@ -34,8 +34,8 @@ public class WaveArray {
 	        2. if ele at odd index is > than its prev ele, swap them
 	    */
 	    for(int i=1; i<len; i++){
-	        int cur =A[i], prev=A[i-1];
-	        
+	        int cur =A[i], 
+                    prev=A[i-1];
 	        
 	        if(i%2==0 && cur<prev)// even index
 	            swap(A, i, i-1 );
