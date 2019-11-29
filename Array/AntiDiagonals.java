@@ -1,9 +1,8 @@
 /*
- Give a N*N square matrix, return an array of its anti-diagonals. Look at the example for more details.
+ Give a N*N square matrix, return an array of its anti-diagonals. Look at the 
+ example for more details.
 
 Example:
-
-		
 Input: 	
 
 1 2 3
@@ -19,7 +18,6 @@ Return the following :
   [6, 8],
   [9]
 ]
-
 
 Input : 
 1 2
@@ -52,6 +50,7 @@ public class AntiDiagonals {
         //sum of row+col is same
         int row = a.size();
         int col = a.get(0).size();
+        
         //initilize the ans list of lists with empty placeholders
         for (int i = 0; i < row + col - 1; i++) {
             res.add(new ArrayList<Integer>());
