@@ -44,10 +44,23 @@ public class LargestNumber {
             str[i]=String.valueOf(A.get(i));
         }
         
-        //write comparator to sort the String obj array in descending order of the strings
+        /*write comparator to sort the String obj array in descending order of the strings
+          The java string compareTo() method compares the given string with current string 
+          lexicographically. It returns positive number, negative number or 0.It compares 
+          strings on the basis of Unicode value of each character in the strings.
+          If first string is lexicographically greater than second string, it returns positive 
+          number (difference of character value). If first string is less than second string 
+          lexicographically, it returns negative number and if first string is lexicographically 
+          equal to second string, it returns 0.
+        */
+        
         Arrays.sort(str, new Comparator<String>(){
             public int compare(String a, String b){
+                //sort in descending order
                 return (b+a).compareTo(a+b);
+                
+                 //sort in ascending order
+                //return (a+b).compareTo(b+a);
             }
         });
         
