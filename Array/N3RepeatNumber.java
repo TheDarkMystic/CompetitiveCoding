@@ -1,9 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+You’re given a read only array of n integers. Find out if any integer occurs more than n/3 times in the array in linear time and constant additional space.
+If so, return the integer. If not, return -1.
+If there are multiple solutions, return any one.
+Example :
+
+Input : [1 2 3 1 1]
+Output : 1 
+1 occurs 3 times which is more than 5/3 times. 
  */
-package interviewprep.Array.MissingRepeatedNumber;
+package interviewprep.Array;
 
 /**
  *
@@ -11,59 +16,81 @@ package interviewprep.Array.MissingRepeatedNumber;
  */
 import java.util.*;
 public class N3RepeatNumber {
-    public int repeatedNumber(final List<Integer> nums) {
-	    
-	    int len= nums.size(),
-        cand1=0,
-        cand2=0,
-        count1=0,
-        count2=0;
+    // DO NOT MODIFY THE LIST
+    public int repeatedNumber(final List<Integer> a) {
+        int len = a.size();
+
+        if(a.size() == 0) {
+            return -1;
+        }
+
+        if(a.size() == 1) {
+            return a.get(0);
+        }
+
+        int c1 = a.get(0);
+        int c2 = a.get(1);
+        int c1count = 0;
+        int c2count = 0;
         
-        
-        //phase1 [1,2,2,3,2,1,1,3]=>[2,1]//order of if else is ver 
-        //important
-        for(int n: nums){
-            if(n==cand1) count1++;
-                    else 
-                        if(n==cand2) count2++;
-                        else
-                            if(count1==0){
-                                cand1=n; 
-                                count1=1;
-                            }
-                            else  
-                                if(count2==0){
-                                    cand2=n;
-                                    count2=1;
-                                } 
-                                else{
-                                        count1--;
-                                        count2--;
-                                    }
+        //Step 1: Find the candidates
+        for(int num : a) {
+            if(c1 == num) {
+                c1count++;
+            } else if(c2 == num) {
+                c2count++;
+            } else if(c1count == 0) {
+                c1 = num;
+                c1count = 1;
+            } else if(c2count == 0) {
+                c2 = num;
+                c2count = 1;
+            } else {
+                c1count--;
+                c2count--;
+            }
         }
         
-        //phase2
-        count1=0; 
-        count2=0;
-        for(int n:nums){
-            if(n==cand1)
-                count1++;
-            else if(n==cand2)
-                count2++;
+        //Step 2: Confirm candidates are the majority element
+        c1count = 0;
+        c2count = 0;
+        for(int num : a) {
+            if(c1 == num) {
+                c1count++;
+            } else if(num == c2) {
+                c2count++;
+            }
         }
         
-        //Set<Integer> set= new HashSet<>();
-        // avoid duplicates in result[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]=
-        //>[0,0]... which is not correct
-        
-        if(count1>len/3) return cand1;
-        else
-            if(count2>len/3) return cand2;
-	    
-	    return -1;
-	}
+        //return the ans
+        if(c1count > len / 3) {
+            return c1;
+        } else if(c2count > len / 3) {
+            return c2;
+        } else {
+            return -1;
+        }
+
+    }
 }
 
+/*
+Link-
+Notes-
+https://www.youtube.com/watch?v=uwogtyFiDLg             Skip to 7:00
+https://www.youtube.com/watch?v=zOyOwDEF1Rc
+
+https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm
+Proof of Correctness:
+If there is a majority element, the algorithm will always find it. For, supposing that the majority 
+element is m, let c be a number defined at any step of the algorithm to be either the counter, if the 
+stored element is m, or the negation of the counter otherwise. Then at each step in which the algorithm 
+encounters a value equal to m, the value of c will increase by one, and at each step at which it 
+encounters a different value, the value of c may either increase or decrease by one. If m truly is the 
+majority, there will be more increases than decreases, and c will be positive at the end of the 
+algorithm. But this can be true only when the final stored element is m, the majority element.
+
+*/
 
 /*
 *
